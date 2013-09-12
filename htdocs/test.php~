@@ -1,0 +1,5 @@
+<?php
+		$url="http://www.youtube.com/watch?v=xY_MUB8adEQ";
+		$id = explode("v=",$url)[1];
+		return "<iframe width='400' height='400' src='http://www.youtube.com/embed/".$id."' frameborder='0' allowfullscreen></iframe>";
+?>

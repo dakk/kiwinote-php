@@ -1,0 +1,16 @@
+$_SESSION['name'] contiene il nome utente dell'utente loggato.
+
+show_notes.php 
+	Riceve con POST l'url wiki_page e restituisce una lista html
+	con tutte le note.
+
+login.php 
+	Riceve con POST name e pass. Se corrette crea la sessione
+	e restituisce 0.
+
+logout.php
+	Esegue il logout della sessione
+
+
+php/db_ops.php
+	Operazioni sul database

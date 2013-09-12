@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html lang="it">
+
+	<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="x-ua-compatible" content="IE=9"/>
+	<title>Kiwinote</title>
+	<link href="style.css" rel="stylesheet">
+
+    <script src="../js/jquery.js" type="text/javascript"></script>
+	<link rel="shortcut icon" href="../favicon.ico" />
+	</head>
+
+	<body>
+  
+    <div id="topBar">
+    
+    </div>
+  
+<?php
+	require('../php/db.php');
+	require('../php/db_ops.php');
+
+	session_start();
+	
+	$owner = $_SESSION['name'];
+	$page = $_GET['url'];
+	$id = $_GET['id'];
+	$note = getUserNote($owner, $page, $id);
+?>
+    <div id="content">
+  
+      <div id="headDetailNote">
+    
+        <div class="note">
+        
+          <div class="icon text">
+            
+          </div>
+          
+          <div class="title">
+            <?php echo $note['title']; ?>
+          </div>
+          
+          <div class="description">
+            <?php echo $note['creation_date']; ?>
+          </div>
+          
+        </div>
+    
+      </div>
+      
+      <div id="bodyDetailNote">
+            <?php showNoteData($note['data'], $note['type'], true); ?>
+      </div>
+      
+    </div>
+  
+    <div id="bottomBar">
+    
+      <div id="leftButtons">
+      
+        <div class="buttonBottom">
+        
+          <div class="icon">
+          
+            <a href="list.php?fullscreen=<?php echo $_GET['fullscreen']; ?>&url=<?php echo $_GET['url']; ?>"> <img src="icons/back.png" alt="Indietro"></img> </a>
+            
+          </div>
+        
+        </div>
+        
+      </div>
+      
+      <div id="centerButtons">
+      
+        <div class="buttonBottom">
+        
+          <div class="icon">
+          
+            <a href="compose.php?edit=<?php echo $note['id']; ?>&type=<?php echo $note['type']; ?>&fullscreen=<?php echo $_GET['fullscreen']; ?>&url=<?php echo $_GET['url']; ?>"> <img src="icons/edit.png" alt="Modifica"></img> </a>
+            
+          </div>
+        
+        </div>
+        
+        <div class="buttonBottom">
+        
+          <div class="icon">
+          
+            <a href="deleteConfirm.php?fullscreen=<?php echo $_GET['fullscreen']; ?>&url=<?php echo $_GET['url']; ?>&id=<?php echo $note['id']; ?>"> <img src="icons/erase.png" alt="Elimina"></img> </a>
+            
+          </div>
+        
+        </div>
+        
+      </div>
+      
+      <div id="rightButtons">
+      
+      <?php if($_GET['fullscreen']==0){ ?>
+      
+        <div id="fullscreen" class="buttonBottom">
+        
+          <div class="icon">
+          
+            <a href="#" 
+            onclick="
+              window.open('detail.php?id=<?php echo $_GET['id']; ?>&url=<?php echo $_GET['url']; ?>&fullscreen=1', 
+              'Kiwinote', 
+              'width=300, height=460'); 
+            "> 
+            
+              <img src="icons/fullscreen.png" alt="PopUp"></img> 
+            
+            </a>
+            
+          </div>
+        
+        </div>
+        
+      <?php } ?>
+        
+      </div>
+    
+    </div>
+ 
+  </body>
+  
+</html>

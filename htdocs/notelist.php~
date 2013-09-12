@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>KiwiNote</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }	
+	</style>
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="js/jquery.js" type="text/javascript"></script>
+    <script src="js/bootstrap.js" type="text/javascript"></script>
+
+	<?php $logged=1; ?>
+  </head>
+
+  <body>
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+                        <a class="brand" href="index.php">KiwiNote</a>
+                        <div class="nav-collapse collapse">
+                            <ul class="nav">
+                                <li class="active"><a href="index.php">Home</a></li>
+                                <li class="active"><a href="index.php">About</a></li>
+                                <li class="active"><a href="index.php">Contact Us</a></li>
+                            </ul>
+                        </div><!--/.nav-collapse -->
+
+
+		  			    <!-- Se non sei loggato visualizza il form di login, altrimenti visualizza il nome utente -->
+						<?php if(!$logged)
+							{ ?>
+								<form class="navbar-form pull-right">
+								  <input class="span2" type="text" placeholder="Email">
+								  <input class="span2" type="password" placeholder="Password">
+								  <button type="submit" class="btn">Sign in</button>
+								</form>
+						<?php } else { ?>
+								<div class="nav-collapse collapse">
+				                <ul class="nav pull-right">
+								    <li id="fat-menu" class="dropdown">
+								      <a href="#" id="udrop" role="button" class="dropdown-toggle" data-toggle="dropdown"><b>User</b> <i class="icon-chevron-down icon-white"></i></a>
+								      <ul class="dropdown-menu" role="menu" aria-labelledby="udrop">
+								        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Settings</a></li>
+								        <li role="presentation" class="divider"></li>
+								        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Logout</a></li>
+								      </ul>
+								    </li>
+								  </ul>
+								</div>
+
+
+						<?php } ?>
+                    </div>
+                </div>
+            </div>
+                    
+            <div class="container">
+			<?php if(!$logged)
+			{ ?>
+				  <!-- Se non sei loggato visualizza questo messaggio di benvenuto -->
+				  <div class="well">
+					<h3>Welcome!</h3>
+					<div align="center"><img src="img/logo.png" width="250px" /></div>
+					<p>KiwiNote is a new cloud platform to add personal note on wikipedia articles. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					<div align="right"><p><a href="#signupModal" data-toggle="modal" class="btn btn-primary btn-medium">Sign Up &raquo;</a></p></div>
+			 
+					<!-- Modal -->
+					<div id="signupModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
+					<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					<h3 id="signupModalLabel">Sign Up</h3>
+					</div>
+					<div class="modal-body">
+						  <form class="form-signin">
+							Nickname:<br>
+							<input type="text" class="input-block-level" placeholder="Nickname">
+							Email:<br>
+							<input type="text" class="input-block-level" placeholder="Email address">
+							Password:<br>
+							<input type="password" class="input-block-level" placeholder="Password">
+						  </form>
+					</div>
+					<div class="modal-footer">
+					<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+					<button class="btn btn-primary" type="submit">Sign up</button>
+					</div>
+					</div>
+
+
+				  </div>
+			<?php } else { ?>
+				<!-- Altrimenti visualizzo la lista delle pagine di wikipedia in cui l'utente ha inserito note -->
+				<div align="center" class="pagination">
+					<ul>
+					<li><a href="#">Prev</a></li>
+					<li><a href="#">1</a></li>
+					<li><a href="#">Next</a></li>
+					</ul>
+				</div>
+
+				<table class="table table-bordered" style="text-align: center">
+					<tr>
+						<td>Design Patterns</td>
+						<td>3 notes</td>
+						<td>
+							<i class="icon-remove"></i>
+							<i class="icon-share"></i>
+							<i class="icon-arrow-right"></i>
+						</td>
+					</tr>
+					<tr>
+						<td>Italia</td>
+						<td>12 notes</td>
+						<td>
+							<i class="icon-remove"></i>
+							<i class="icon-share"></i>
+							<i class="icon-arrow-right"></i>
+						</td>
+					</tr>
+					<tr>
+						<td>Radiohead</td>
+						<td>1 notes</td>
+						<td>
+							<i class="icon-remove"></i>
+							<i class="icon-share"></i>
+							<i class="icon-arrow-right"></i>
+						</td>
+					</tr>
+					<tr>
+						<td>Reggae</td>
+						<td>9 notes</td>
+						<td>
+							<i class="icon-remove"></i>
+							<i class="icon-share"></i>
+							<i class="icon-arrow-right"></i>
+						</td>
+					</tr>
+				</table>
+
+				<div align="center" class="pagination">
+					<ul>
+					<li><a href="#">Prev</a></li>
+					<li><a href="#">1</a></li>
+					<li><a href="#">Next</a></li>
+					</ul>
+				</div>
+
+				<!-- Questo lo uso per le ntoe
+				<div class="accordion" id="accordion2">
+					<div class="accordion-group">
+						<div class="accordion-heading">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#c1">
+								Collapsible Group Item #1
+							</a>
+						</div>
+					<div id="c1" class="accordion-body collapse">
+						<div class="accordion-inner">
+							Anim pariatur cliche...
+						</div>
+					</div>
+				</div>
+				<div class="accordion" id="accordion2">
+					<div class="accordion-group">
+						<div class="accordion-heading">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#c2">
+								Collapsible Group Item #1
+							</a>
+						</div>
+					<div id="c2" class="accordion-body collapse">
+						<div class="accordion-inner">
+							Anim pariatur cliche...
+						</div>
+					</div>
+				</div>-->
+			<?php } ?>
+
+            </div> <!-- /container -->
+           
+
+  </body>
+</html>

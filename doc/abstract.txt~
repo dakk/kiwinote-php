@@ -1,0 +1,92 @@
+1 testo
+2 immagine
+3 
+4 video
+
+
+- Possibilia' di registrazione/login utenti
+    Dati richiesti:
+        username
+        password
+        ripetipass
+        mail
+        
+- Pagina di amministrazione con l'elenco delle note in una lista
+    e dei tasti per la modifica e l'eliminazione
+    
+- Pagina php di interfacciamento con lo script; lo script invia una richiesta post
+    a questa pagina, che provvedera' ad inserire i dati nel database.
+    
+    Per quanto riguarda il login, si puo' pensare di utilizzare una connessione
+    sicura tra script e webserver, in modo da poter mettere nella richiesta post
+    anche i dati identificativi (la password viene comunque inviata in hexdigest md5)
+    
+    La definizione di questa pagina consentira' la comunicazione tra la piattaforma web
+    e le applicazioni di qualsiasi tipo, basta che rispettino le specifiche del nostro
+    formato.
+    
+    Il formato di trasmissione dei dati potrebbe essere JSON.
+    
+    I tipi di request che possiamo fare a questa pagina son principalmente 2:
+        - Input: url pagina wiki/ALL -> Output: lista note
+            Lo script invia al server:
+                {
+                    "user": "pinco",
+                    "pass": "234hb234b34j41h54k34",
+                    "type": "note-get",
+                    "url": None | "it.wiki.org/Pincopallino"
+                }      
+            Il server restituisce:
+                {
+                    "type": "note-list",
+                    
+                    "notes":
+                    [
+                        "note":
+                        {
+                            "url": "it.wiki...",
+                            "format": "text",   // text | video | image
+                            "content": "Contenuto della nota, in questo caso e' un cazzo di testo",
+                            "id": "idnumerico"
+                        },
+                        "note":
+                        {
+                            "url": "it.wiki...",
+                            "format": "text",   // text | video | image
+                            "content": "Contenuto della nota, in questo caso e' un cazzo di testo",
+                            "id": "idnumerico"
+                        }                
+                    ]
+                } 
+            
+          
+        - Input: nota -> Output: idnota
+            Client invia:
+                {
+                    "user": "pinco",
+                    "pass": "234hb234b34j41h54k34",
+                    "type": "note-add",
+                    
+                    "note":
+                    {
+                        "url": "it.wiki...",
+                        "format": "text",   // text | video | image
+                        "content": "Contenuto della nota, in questo caso e' un cazzo di testo"
+                    }
+                }
+             
+            Server restituisce
+                {
+                    "type": "note-add-notify",
+                    
+                    "note":
+                    {
+                        "url": "it.wiki...",
+                        "id": "idnumerico"
+                    }
+                }
+                
+                
+Per la grafica userei i twitter bootstrap
+    - Pannello in alto con le stronzate di login e le pagine visitabili
+    - Pannello centrale con altre stronzate

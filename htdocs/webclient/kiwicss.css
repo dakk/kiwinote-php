@@ -1,0 +1,93 @@
+#buttonContainer{
+  width: 49px;
+  height: 22px;
+  position: absolute; 
+  left: 0px; 
+  top: 0px;
+  z-index: 153;
+}
+
+#newNoteOpen{
+  float: left;
+  width: 28px;
+  height: 20px;
+  border-top: 1px solid #fc9d00;
+  border-left: 1px solid #fc9d00;
+  border-right: 0px solid #fc9d00;
+  z-index: 153;
+}
+
+  #newNoteOpen > img{
+    margin-left: 3px;
+    margin-top: -13px;
+    padding: 0;
+    vertical-align: middle;
+  }
+
+#noteListOpen{
+  float: left;
+  width: 18px;
+  height: 20px;
+  border-top: 1px solid #fc9d00;
+  border-left: 1px solid #fc9d00;
+  border-right: 1px solid #fc9d00;
+  z-index: 153;
+}
+
+  #noteListOpen > img{
+    margin-left: 1px;
+    margin-top: -14px;
+    padding: 0;
+    vertical-align: middle;
+  }
+
+#noteList{ 
+  width: 300px; 
+  height: 460px;
+  border: 1px solid #fc9d00;
+  background-color: #FFF;
+  position: absolute; 
+  left: 0px; 
+  top: 0px;
+  display: none; 
+  z-index: 150; 
+}
+
+#newNote{ 
+  width: 300px; 
+  height: 460px;
+  border: 1px solid #fc9d00;
+  background-color: #FFF;
+  position: absolute; 
+  left: 0px; 
+  top: 0px;
+  display: none; 
+  z-index: 150; 
+}
+
+#overlay{
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 149;
+}
+
+.disabled{
+	background: -moz-linear-gradient(top,  #ffd000,  #ffb400);
+  border-bottom: 1px solid #fc9d00;
+  box-shadow: 0px 0px 3px #787878;
+}
+
+.disabled:hover{
+	background: -moz-linear-gradient(top,  #fed90e,  #fed91f);
+  border-bottom: 1px solid #fc9d00;
+  box-shadow: 0px 0px 3px #787878;
+}
+
+.enabled{
+  background-color: #fffe9b;
+  border-bottom: 1px solid #fffe9b;
+  box-shadow: 0px 0px 0px #787878;
+}

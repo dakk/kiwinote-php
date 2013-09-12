@@ -1,0 +1,39 @@
+create database kiwi;
+
+
+create table user
+(
+	id 				int(8) primary key auto increment not null,
+	name			varchar(32),
+	email			varchar(128),
+	pass_hash	 	char(128),
+	reg_date		datetime
+);
+
+
+/*
+	Il campo type individua il tipo di nota, mentre il campo
+	data contiene i dati della nota; il significato dei dati varia
+	a seconda del tipo di nota:
+		type = 1 = Testo
+			data contiene il testo della nota (in html?)
+
+		type = 2 = Link
+			data contiene l'url (in html?)
+
+		type = 3 = Immagine
+			data contiene l'url dell'immagine (in html?)
+
+		type = 4 = Video
+			data contiene l'url del video
+ */
+create table note
+{
+	id				int(8),
+	owner_id		int(8),
+	wiki_page		varchar(1024),
+	type			int(1),
+	creation_date	datetime,
+	data			text,
+	primary key (id, owner_id)
+};

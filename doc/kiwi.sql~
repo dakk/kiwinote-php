@@ -1,0 +1,76 @@
+-- phpMyAdmin SQL Dump
+-- version 3.5.3
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Feb 21, 2013 at 03:08 PM
+-- Server version: 5.5.29-log
+-- PHP Version: 5.4.8--pl0-gentoo
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `kiwi`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `note`
+--
+
+CREATE TABLE IF NOT EXISTS `note` (
+  `id` int(8) NOT NULL AUTO_INCREMENT,
+  `owner_name` varchar(32) NOT NULL,
+  `wiki_page` varchar(1024) NOT NULL,
+  `wiki_page_title` varchar(1024) NOT NULL,
+  `type` int(1) NOT NULL DEFAULT '0',
+  `creation_date` datetime NOT NULL,
+  `title` varchar(1024),
+  `data` text NOT NULL,
+  PRIMARY KEY (`id`,`owner_name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `note`
+--
+
+INSERT INTO `note` (`id`, `owner_name`, `wiki_page`, `wiki_page_title`, `type`, `creation_date`, `data`, `title`) VALUES
+(1, 'dak', 'http://en.wikipedia.org/wiki/Design_pattern', 'Design pattern', 1, '2013-02-21 12:46:25', 'Una nota di esempio a caso', 'La nota morta'),
+(2, 'dak', 'http://en.wikipedia.org/wiki/Web_scraping', 'Web scraping', 4, '2013-02-21 14:08:55', '<iframe width="420" height="315" src="http://www.youtube.com/embed/52wxGESwQSA" frameborder="0" allowfullscreen></iframe>', 'Come fare web scraping'),
+(3, 'dak', 'http://en.wikipedia.org/wiki/Web_scraping', 'Web scraping', 1, '2013-02-21 14:12:19', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id velit nisl, et dapibus est. Vestibulum mauris libero, pellentesque quis adipiscing sit amet, ornare in mi. Sed rutrum dui vel nisl sodales scelerisque. Vivamus imperdiet tellus id nulla sagittis pharetra. Mauris consequat ante in felis dignissim sollicitudin. Vestibulum accumsan, ante cursus tempus molestie, justo dui gravida arcu, sit amet placerat libero augue ac neque. Curabitur gravida, turpis id varius molestie, ipsum turpis dignissim velit, eu porttitor tortor neque vel orci. Duis eget turpis ac metus tempor rhoncus. Duis laoreet pulvinar felis, vitae gravida sem feugiat sit amet. Nam viverra placerat lobortis. Cras vulputate lobortis ullamcorper. Vivamus mattis molestie purus in egestas. Nunc eget lectus condimentum urna semper vestibulum vel sit amet tellus. Proin imperdiet dictum massa, facilisis euismod massa interdum non. Nam vitae sem tellus. ', 'La voce della verita'),
+(4, 'dak', 'http://en.wikipedia.org/wiki/Web_scraping', 'Web scraping', 2, '2013-02-21 16:03:20', '<img src="http://users.ugent.be/~bpuype/wget/wget-screen.png" />', 'Una foto a casaccio'),
+(5, 'dak', 'http://en.wikipedia.org/wiki/Web_scraping', 'Web scraping', 3, '2013-02-21 16:04:10', '<a href="http://en.wikipedia.org/wiki/Web_crawler">http://en.wikipedia.org/wiki/Web_crawler</a>', 'Un link a casaccio');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` int(8) NOT NULL AUTO_INCREMENT,
+  `name` varchar(32) NOT NULL,
+  `email` varchar(128) NOT NULL,
+  `pass_hash` char(128) NOT NULL,
+  `reg_date` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `name`, `email`, `pass_hash`, `reg_date`) VALUES
+(1, 'dak', 'dak.linux@gmail.com', 'c7020a23c8975a3552eafdbbfc430f8f', '2013-02-21 12:44:46');
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -1,0 +1,1 @@
+[26-Feb-2013 15:06:03 Europe/Berlin] PHP Warning:  session_start() [<a href='function.session-start'>function.session-start</a>]: Cannot send session cache limiter - headers already sent (output started at /home/staytune/public_html/kiwi/index.php:186) in /home/staytune/public_html/kiwi/index.php on line 187
